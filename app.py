@@ -193,7 +193,7 @@ import time
 # Manual refresh button — safe for Streamlit Cloud
 if st.button("🔄 Refresh Dashboard"):
      st.query_params(ts=int(time.time()))  # refresh URL
-    st.rerun()
+     st.rerun()
 
 # Optional: time-based auto-refresh every 5 minutes (adjust as needed)
 refresh_rate = 300  # seconds (set to 0 to disable)
