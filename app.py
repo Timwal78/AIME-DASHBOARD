@@ -200,7 +200,8 @@ refresh_rate = 300  # seconds (set to 0 to disable)
 if refresh_rate > 0:
     st.caption(f"⏱ Auto-refreshing every {refresh_rate//60} min.")
     time.sleep(refresh_rate)
-    st.query_params(ts=int(time.time()))
+    st.query_params["ts"] = int(time.time())
+
     st.rerun()
 
 
