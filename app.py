@@ -188,7 +188,8 @@ with st.sidebar:
 # auto-refresh pulse
 if auto_refresh:
     st.experimental_set_query_params(ts=int(time.time()))  # cheap URL knob
-    st.experimental_rerun  # hint to Streamlit to allow reruns
+    st.rerun()
+  
     st.autorefresh = st.experimental_singleton(lambda: True)
     st.experimental_memo.clear()  # keep it fresh
     st.runtime.legacy_caching.clear_cache()
