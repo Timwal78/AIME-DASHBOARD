@@ -185,23 +185,22 @@ with st.sidebar:
     max_rows = st.slider("Rows to show (ranked)", 50, 300, 200, 10)
     auto_refresh = st.checkbox("Auto-refresh every 30 sec", value=True)
 
-# ────────────────────────────────────────────────────────────────
+# ───────────────────────────────────────────────
 # AUTO-REFRESH CONTROL (safe version)
-# ────────────────────────────────────────────────────────────────
+# ───────────────────────────────────────────────
 import time
 
 # Manual refresh button — safe for Streamlit Cloud
-if st.button("🔄 Refresh Dashboard"):
-     st.query_params(ts=int(time.time()))  # refresh URL
-     st.rerun()
+if st.button("🔁 Refresh Dashboard"):
+    st.query_params["ts"] = int(time.time())  # refresh URL (new syntax)
+    st.rerun()
 
 # Optional: time-based auto-refresh every 5 minutes (adjust as needed)
 refresh_rate = 300  # seconds (set to 0 to disable)
 if refresh_rate > 0:
-    st.caption(f"⏱ Auto-refreshing every {refresh_rate//60} min.")
+    st.caption(f"⏱️ Auto-refreshing every {refresh_rate / 60} min.")
     time.sleep(refresh_rate)
-    st.query_params["ts"] = int(time.time())
-
+    st.query_params["ts"] = int(time.time())  # also updated here
     st.rerun()
 
 
